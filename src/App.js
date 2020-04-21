@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TabSelector from "./TabSelector";
 import "./App.css";
 
 const Home = () => <p>This is the Home component!</p>;
@@ -37,33 +38,12 @@ class App extends Component {
   }
 
   render() {
-    const { activeId } = this.state;
     return (
       <div className="App">
-        <div className="TabSelector">
-          <button
-            id="home"
-            onClick={this.handleChangeTab}
-            className={activeId === "home" ? "active" : ""}
-          >
-            Home
-          </button>
-          <button
-            id="about"
-            onClick={this.handleChangeTab}
-            className={activeId === "about" ? "active" : ""}
-          >
-            About
-          </button>
-          <button
-            id="contact"
-            onClick={this.handleChangeTab}
-            className={activeId === "contact" ? "active" : ""}
-          >
-            Contact
-          </button>
-        </div>
-
+        <TabSelector
+          activeId={this.state.activeId}
+          handleChangeTab={this.handleChangeTab}
+        />
         <div className="App-content">{this.getTabContent()}</div>
       </div>
     );
